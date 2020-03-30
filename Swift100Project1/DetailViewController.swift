@@ -24,4 +24,17 @@ class DetailViewController: UIViewController {
             
         }
     }
+    
+    // Hiding & showing navigation bar while viewing picture
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnTap = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
+    }
+    
 }
