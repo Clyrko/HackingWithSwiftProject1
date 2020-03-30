@@ -17,6 +17,12 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Adding title to Nav bar
+        title = selectedImage
+        
+        // Making sure its not a big title
+        navigationItem.largeTitleDisplayMode = .never
 
         if let imageToLoad = selectedImage {
             
