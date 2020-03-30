@@ -30,6 +30,9 @@ class ViewController: UITableViewController {
             if item.hasPrefix("nssl") {
                 
                 pictures.append(item)
+                
+                // Sorts pictures in order
+                pictures.sort()
             }
         }
         
@@ -55,6 +58,8 @@ class ViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             
             vc.selectedImage = pictures[indexPath.row]
+            vc.selectedPictureNumber = indexPath.row + 1
+            vc.totalPictures = pictures.count
             
             navigationController?.pushViewController(vc, animated: true)
             
