@@ -23,6 +23,9 @@ class DetailViewController: UIViewController {
         // Adding title to Nav bar
         title = "Image \(selectedPictureNumber) of \(totalPictures)"
         
+        // Adding an item to the Nav bar item
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTouched))
+        
         // Making sure its not a big title
         navigationItem.largeTitleDisplayMode = .never
 
@@ -43,6 +46,21 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
+    }
+    
+    @objc func shareTouched() {
+        
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            
+            print("No image found")
+            return
+            
+        }
+        
+        let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+        
     }
     
 }
