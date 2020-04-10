@@ -21,6 +21,7 @@ class ViewController: UITableViewController {
         // Making the title big & dynamic
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        // Path to display the images
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
